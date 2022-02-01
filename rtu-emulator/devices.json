@@ -1,0 +1,134 @@
+[
+  {
+    "operation_time_since": 1614335879,
+    "device_id": "d70262dd-3088-4d55-a37a-a721987e888c",
+    "device_name": "Hybiot-End Node Device 01",
+    "device_type": "EndNode",
+    "timezone": 7,
+    "location_name": "plant_a",
+    "elements": [
+      {
+        "element_id": "VAC0000000",
+        "element_name": "VAC",
+        "unit": "V.",
+        "icon": "bolt"
+      },
+      {
+        "element_id": "FAC0000000",
+        "element_name": "Frequency",
+        "unit": "Hz.",
+        "icon": "wave-sine"
+      },
+      {
+        "element_id": "IL00000000",
+        "element_name": "Current L",
+        "unit": "A.",
+        "icon": "bolt"
+      },
+      {
+        "element_id": "IN00000000",
+        "element_name": "Current N",
+        "unit": "A.",
+        "icon": "bolt"
+      },
+      {
+        "element_id": "PFL0000000",
+        "element_name": "Power Factor L",
+        "unit": "",
+        "icon": "waveform-path"
+      },
+      {
+        "element_id": "PFN0000000",
+        "element_name": "Power Factor N",
+        "unit": "",
+        "icon": "waveform-path"
+      },
+      {
+        "element_id": "APL0000000",
+        "element_name": "Active Power L",
+        "unit": "W.",
+        "icon": "plug"
+      },
+      {
+        "element_id": "APN0000000",
+        "element_name": "Active Power N",
+        "unit": "W.",
+        "icon": "plug"
+      },
+      {
+        "element_id": "RPL0000000",
+        "element_name": "Reactive Power L",
+        "unit": "VAR.",
+        "icon": "plug"
+      },
+      {
+        "element_id": "RPN0000000",
+        "element_name": "Reactive Power N",
+        "unit": "VAR.",
+        "icon": "plug"
+      },
+      {
+        "element_id": "AFEL000000",
+        "element_name": "Active Forward Energy L",
+        "unit": "kWh.",
+        "icon": "tachometer-average"
+      },
+      {
+        "element_id": "AFEN000000",
+        "element_name": "Active Forward Energy N",
+        "unit": "kWh.",
+        "icon": "tachometer-average"
+      },
+      {
+        "element_id": "PAL0000000",
+        "element_name": "Phase Angle L",
+        "unit": "Degree",
+        "icon": "wave-sine"
+      },
+      {
+        "element_id": "PAN0000000",
+        "element_name": "Phase Angle N",
+        "unit": "Degree",
+        "icon": "wave-sine"
+      }
+    ]
+  },
+  {
+    "location_name": "plant_a",
+    "device_name": "Hybiot-End Node Device 02",
+    "device_id": "2d1d6c1f-c051-43a1-ac4c-af708296d973",
+    "timestamp": 1234567890,
+    "device_type": "SD950",
+    "firmware_version": "3.11.11",
+    "operation_time_since": 1614335879,
+    "timezone": 7,
+    "elements": [
+      { "element_id": "S1AC0100", "unit": "V.", "element_name": "Volatge AC", "icon": "bolt" },
+      { "element_id": "S1AC0200", "unit": "A.", "element_name": "L Current AC", "icon": "bolt" },
+      { "element_id": "S1AC0201", "unit": "A.", "element_name": "N Current AC", "icon": "bolt" },
+      { "element_id": "S1AC0300", "unit": "Hz", "element_name": "AC Frequency", "icon": "wave-sine" },
+      { "element_id": "S1AC0400", "unit": "", "element_name": "L PF", "icon": "waveform-path" },
+      { "element_id": "S1AC0401", "unit": "", "element_name": "N PF", "icon": "waveform-path" },
+      { "element_id": "S1AC0500", "unit": "W.", "element_name": "L Active Power", "icon": "plug" },
+      { "element_id": "S1AC0501", "unit": "W.", "element_name": "N Active Power", "icon": "plug" },
+      { "element_id": "S1AC0600", "unit": "VAR", "element_name": "L Reactive Power", "icon": "plug" },
+      { "element_id": "S1AC0601", "unit": "VAR", "element_name": "N Reactive Power", "icon": "plug" },
+      { "element_id": "S1AC0700", "unit": "VA", "element_name": "L Apperant Power", "icon": "plug" },
+      { "element_id": "S1AC0701", "unit": "VA", "element_name": "N Apperant Power", "icon": "plug" },
+      {
+        "element_id": "S1AC0800",
+        "unit": "kWh",
+        "element_name": "Active Forward Energy",
+        "icon": "tachometer-average"
+      },
+      {
+        "element_id": "S1AC0801",
+        "unit": "kWh",
+        "element_name": "Active Reverse Energy",
+        "icon": "tachometer-average"
+      },
+      { "element_id": "S1AC0900", "unit": "º", "element_name": "L Phase Angle", "icon": "circle-notch" },
+      { "element_id": "S1AC0901", "unit": "º", "element_name": "N Phase Angle", "icon": "circle-notch" }
+    ]
+  }
+]

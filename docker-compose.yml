@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  edge_web:
+    container_name: edge_web
+    image: ghcr.io/dnjooiopa/edge_web:${edge_version}
+    ports:
+      - 8088:80
+  edge_api-server:
+    container_name: edge_api-server
+    image: ghcr.io/dnjooiopa/edge_api-server:${edge_version}
+    env_file: .env.api_server
+    ports:
+      - 3030:3030
+    volumes:
+      - /mnt/storage/:/usr/src/app/data/
+  edge_timescaledb:
+    container_name: edge_timescaledb
+    build:
+      context: ./core/timescaledb
+    restart: unless-stopped
+    env_file: .env.timescaledb
+    volumes:
+      - /mnt/storage/timescaledb:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+  edge_emqx:
+    container_name: edge_emqx
+    image: emqx/emqx:4.3.8
+    restart: on-failure
+    env_file: .env.emqx
+    volumes:
+      - emqx-data:/opt/emqx/data
+      - emqx-etc:/opt/emqx/etc
+      - emqx-log:/opt/emqx/log
+    ports:
+      - 1884:1883
+      - 18084:18083
+
+volumes:
+  emqx-data: null
+  emqx-etc: null
+  emqx-log: null
