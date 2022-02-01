@@ -78,7 +78,7 @@ function runRealtime(device, mqttClient) {
       console.log(payload);
       client.publish(realtimeTopic, JSON.stringify(payload));
     }
-  }, 3000);
+  }, 4000);
 }
 
 for (const index in devices) {
