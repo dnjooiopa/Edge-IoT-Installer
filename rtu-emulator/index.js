@@ -32,13 +32,15 @@ function runMetaData(device, mqttClient) {
   client.on('connect', () => {
     console.log('🟢 RTU meta data connected');
     const requestTopic = `iot/${device.location_name}/${device.device_id}/info/request`;
+    const responseTopic = `iot/${device.location_name}/${device.device_id}/info/response`;
+
+    client.publish(responseTopic, JSON.stringify(device));
+
     client.subscribe(requestTopic, (err) => {
       if (err) {
         return console.log(`🔴 Cannot subscribe to ${requestTopic}`);
       }
     });
-
-    const responseTopic = `iot/${device.location_name}/${device.device_id}/info/response`;
 
     client.on('message', (topic, payload) => {
       client.publish(responseTopic, JSON.stringify(device));
@@ -78,11 +80,10 @@ function runRealtime(device, mqttClient) {
       console.log(payload);
       client.publish(realtimeTopic, JSON.stringify(payload));
     }
-  }, 4000);
+  }, 3000);
 }
 
 for (const index in devices) {
   runMetaData(devices[index], mqttMetas[index]);
   runRealtime(devices[index], mqttUsers[index]);
 }
-
