@@ -1,4 +1,6 @@
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 
 const MQTT = require('mqtt');
 
@@ -11,26 +13,32 @@ const mqttUsers = [{
   username: process.env.MQTT2_REALTIME_USERNAME,
   password: process.env.MQTT2_REALTIME_PASSWORD
 }];
-const mqttMetas = [{
-  username: process.env.MQTT1_META_USERNAME,
-  password: process.env.MQTT1_META_PASSWORD
-},
-{
-  username: process.env.MQTT2_META_USERNAME,
-  password: process.env.MQTT2_META_PASSWORD
-}];
 
-function runMetaData(device, mqttClient) {
-  const client = MQTT.connect({
+function runRealtime(device, mqttClient) {
+
+  const KEY = fs.readFileSync(path.join(__dirname, 'certificates', device.device_id, `${device.device_id}.key`)).toString();
+  const CERT = fs.readFileSync(path.join(__dirname, 'certificates', device.device_id, `${device.device_id}.pem`)).toString();
+  const CA = [fs.readFileSync(path.join(__dirname, 'certificates', 'ca.pem')).toString()];
+
+  const options = {
     host: process.env.MQTT_HOST,
     username: mqttClient.username,
     password: mqttClient.password,
     port: process.env.MQTT_PORT,
-    protocol: 'mqtt',
-  });
+    protocol: 'mqtts',
+    ca: CA,
+    key: KEY,
+    cert: CERT,
+    rejectUnauthorized: true
+  };
+
+  console.log(options);
+
+  const client = MQTT.connect(options);
 
   client.on('connect', () => {
-    console.log('🟢 RTU meta data connected');
+    console.log('🟢 RTU realtime connected');
+
     const requestTopic = `iot/${device.location_name}/${device.device_id}/info/request`;
     const responseTopic = `iot/${device.location_name}/${device.device_id}/info/response`;
 
@@ -46,19 +54,9 @@ function runMetaData(device, mqttClient) {
       client.publish(responseTopic, JSON.stringify(device));
     });
   });
-}
 
-function runRealtime(device, mqttClient) {
-  const client = MQTT.connect({
-    host: process.env.MQTT_HOST,
-    username: mqttClient.username,
-    password: mqttClient.password,
-    port: process.env.MQTT_PORT,
-    protocol: 'mqtt',
-  });
-
-  client.on('connect', () => {
-    console.log('🟢 RTU realtime connected');
+  client.on('error', (err) => {
+    console.log(err.message);
   });
 
   const realtimeTopic = `iot/${device.location_name}/${device.device_id}/value`;
@@ -84,6 +82,5 @@ function runRealtime(device, mqttClient) {
 }
 
 for (const index in devices) {
-  runMetaData(devices[index], mqttMetas[index]);
   runRealtime(devices[index], mqttUsers[index]);
 }
