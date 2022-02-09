@@ -35,9 +35,13 @@ services:
       - emqx-data:/opt/emqx/data
       - emqx-etc:/opt/emqx/etc
       - emqx-log:/opt/emqx/log
+      - ./certificates/servers/device.edge_iot/device.edge_iot.key:/etc/certs/device.edge_iot.key
+      - ./certificates/servers/device.edge_iot/device.edge_iot.pem:/etc/certs/device.edge_iot.pem
+      - ./certificates/ca.pem:/etc/certs/ca.pem
     ports:
       - 1884:1883
       - 18084:18083
+      - 8884:8883
 
 volumes:
   emqx-data: null
