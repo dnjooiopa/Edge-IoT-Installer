@@ -6,7 +6,7 @@ services:
     image: ghcr.io/dnjooiopa/edge_web:${edge_version}
     restart: on-failure
     ports:
-      - 8088:80
+      - 80:80
   edge_api-server:
     container_name: edge_api-server
     image: ghcr.io/dnjooiopa/edge_api-server:${edge_version}
@@ -39,9 +39,9 @@ services:
       - ./certificates/servers/device.edge_iot/device.edge_iot.pem:/etc/certs/device.edge_iot.pem
       - ./certificates/ca.pem:/etc/certs/ca.pem
     ports:
-      - 1884:1883
-      - 18084:18083
-      - 8884:8883
+      - 1883:1883
+      - 18083:18083
+      - 8883:8883
 
 volumes:
   emqx-data: null
