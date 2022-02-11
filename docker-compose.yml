@@ -16,6 +16,7 @@ services:
       - 3030:3030
     volumes:
       - /mnt/storage/:/usr/src/app/data/
+      - ./certificates:/usr/certificates
   edge_timescaledb:
     container_name: edge_timescaledb
     build:
