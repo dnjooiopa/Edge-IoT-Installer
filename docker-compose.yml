@@ -11,7 +11,7 @@ services:
     container_name: edge_api-server
     image: ghcr.io/dnjooiopa/edge_api-server:${edge_version}
     restart: unless-stopped
-    env_file: .env.api_server
+    env_file: .api_server.env
     ports:
       - 3030:3030
     volumes:
@@ -22,7 +22,7 @@ services:
     build:
       context: ./core/timescaledb
     restart: unless-stopped
-    env_file: .env.timescaledb
+    env_file: .timescaledb.env
     volumes:
       - ./db/timescale:/var/lib/postgresql/data
     ports:
@@ -31,7 +31,7 @@ services:
     container_name: edge_emqx
     image: emqx/emqx:4.3.8
     restart: unless-stopped
-    env_file: .env.emqx
+    env_file: .emqx.env
     volumes:
       - emqx-data:/opt/emqx/data
       - emqx-etc:/opt/emqx/etc
