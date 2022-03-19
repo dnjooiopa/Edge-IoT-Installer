@@ -23,7 +23,10 @@ cp example.timescaledb.env .timescaledb.env
 
 ```
 chmod +x ./srcipts/autorun.sh
-./srcipts/autorun.sh {SERVER_CN} {EDGE_VERSION}
+./srcipts/autorun.sh {SERVER_CN} {EDGE_VERSION} ${DB_PATH}
+
+# Example
+# ./srcipts/autorun.sh helloworld.local 1.0.0 ./db
 ```
 
 4. Add client

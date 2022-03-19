@@ -1,15 +1,14 @@
 #!/bin/bash
 
-docker-compose down
+export SERVER_CN=$1
+export EDGE_VERSION=$2
+export DB_PATH=$3
 
 rm -rf certificates
 rm -rf db
 
-mkdir db
-mkdir db/timescale
-
-export SERVER_CN=$1
-export EDGE_VERSION=$2
+mkdir $DB_PATH
+mkdir $DB_PATH/timescale
 
 sh ./scripts/issue-root-ca.sh
 sh ./scripts/issue-server-cert.sh $SERVER_CN 192.168.1.1
