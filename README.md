@@ -6,15 +6,7 @@ cp example.emqx.env .emqx.env
 cp example.timescaledb.env .timescaledb.env
 ```
 
-2. Update emqx configurations
-
-```
-# .emqx.env
-EMQX_LISTENER__SSL__EXTERNAL__KEYFILE=/etc/certs/{SERVER_CN}.key
-EMQX_LISTENER__SSL__EXTERNAL__CERTFILE=/etc/certs/{SERVER_CN}.pem
-```
-
-3. Change volume mapping for timescaledb
+2. Change volume mapping for timescaledb
 
 ```
 #Change this
@@ -30,6 +22,12 @@ EMQX_LISTENER__SSL__EXTERNAL__CERTFILE=/etc/certs/{SERVER_CN}.pem
 3. Run
 
 ```
-chmod +x ./autorun.sh
-./autorun {SERVER_CN} {EDGE_VERSION}
+chmod +x ./srcipts/autorun.sh
+./srcipts/autorun.sh {SERVER_CN} {EDGE_VERSION}
+```
+
+4. Add client
+```
+chmod +x ./scripts/addclient.sh
+./scripts/addclient.sh {CLIENT_NAME}
 ```
