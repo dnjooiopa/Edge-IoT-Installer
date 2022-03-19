@@ -1,6 +1,6 @@
 1. Edit environment variables
 
-```
+```sh
 cp example.api_server.env .api_server.env
 cp example.emqx.env .emqx.env
 cp example.timescaledb.env .timescaledb.env
@@ -8,7 +8,7 @@ cp example.timescaledb.env .timescaledb.env
 
 2. Change volume mapping for timescaledb
 
-```
+```yaml
 #Change this
 #1.edge_timescaledb
     volumes:
@@ -21,7 +21,7 @@ cp example.timescaledb.env .timescaledb.env
 
 3. Run
 
-```
+```sh
 chmod +x ./srcipts/autorun.sh
 ./srcipts/autorun.sh {SERVER_CN} {EDGE_VERSION} ${DB_PATH}
 
@@ -30,7 +30,7 @@ chmod +x ./srcipts/autorun.sh
 ```
 
 4. Add client
-```
+```sh
 chmod +x ./scripts/addclient.sh
 ./scripts/addclient.sh {CLIENT_NAME}
 ```
