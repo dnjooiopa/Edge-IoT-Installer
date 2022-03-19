@@ -1,5 +1,9 @@
-.env*
+
 db
 *node_modules*
 external-services
 *certificates
+
+.api_server.env
+.emqx.env
+.timescaledb.env
