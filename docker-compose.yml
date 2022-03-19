@@ -3,13 +3,13 @@ version: '3.8'
 services:
   edge_web:
     container_name: edge_web
-    image: ghcr.io/dnjooiopa/edge_web:${edge_version}
+    image: ghcr.io/dnjooiopa/edge_web:${EDGE_VERSION}
     restart: unless-stopped
     ports:
       - 80:80
   edge_api-server:
     container_name: edge_api-server
-    image: ghcr.io/dnjooiopa/edge_api-server:${edge_version}
+    image: ghcr.io/dnjooiopa/edge_api-server:${EDGE_VERSION}
     restart: unless-stopped
     env_file: .api_server.env
     ports:
@@ -19,8 +19,7 @@ services:
       - ./certificates:/usr/certificates
   edge_timescaledb:
     container_name: edge_timescaledb
-    build:
-      context: ./core/timescaledb
+    image: ghcr.io/dnjooiopa/edge_timescaledb:1.0.0
     restart: unless-stopped
     env_file: .timescaledb.env
     volumes:
