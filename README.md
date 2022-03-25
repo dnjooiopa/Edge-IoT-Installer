@@ -1,13 +1,15 @@
 ## Prerequisite
 
-Install Docker
+1. Create partition for NVME (follow this -> https://phoenixnap.com/kb/linux-create-partition)
+
+2. Install Docker
 
 ```sh
 ./scripts/install-docker.sh
 sudo reboot
 ```
 
-Login to Github Packages Registry
+3. Login to Github Packages Registry
 
 ```
 export CR_PAT={YOUR_TOKEN}
