@@ -12,6 +12,7 @@ sudo reboot
 3. Login to Github Packages Registry
 
 ```
+
 export CR_PAT={YOUR_TOKEN}
 echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 ```
